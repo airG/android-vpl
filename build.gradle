@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.5"
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+bintray {
+    publications = []
+    configurations = []
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+def tokenfile = rootProject.file("tokens.properties");
+
+if (!tokenfile.exists ()) {
+    logger.quiet("no '${tokenfile.name}' file found. This is where you'd put your analytics token for the sample apps.")
+    throw new GradleException("File '${tokenfile.name}' not found.")
+}
+
+def tokens = new Properties()
+tokens.load(tokenfile.newDataInputStream())
+
+ext {
+    token = tokens['mixpanel']
+}

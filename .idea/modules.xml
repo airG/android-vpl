@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/oss-vpl.iml" filepath="$PROJECT_DIR$/oss-vpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-apk/sample-apk.iml" filepath="$PROJECT_DIR$/sample-apk/sample-apk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-vpl/sample-vpl.iml" filepath="$PROJECT_DIR$/sample-vpl/sample-vpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vpl/vpl.iml" filepath="$PROJECT_DIR$/vpl/vpl.iml" />
+    </modules>
+  </component>
+</project>

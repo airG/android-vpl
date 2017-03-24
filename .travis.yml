@@ -1,0 +1,34 @@
+language: android
+jdk: oraclejdk8
+
+branches:
+  only:
+    - master
+
+git:
+  depth: 3
+
+android:
+  components:
+    - platform-tools
+    - tools
+    - build-tools-25.0.2
+    - android-19
+    - android-25
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - sys-img-armeabi-v7a-android-19
+
+before_install:
+  - echo no | android create avd --force -n logger -t android-19 --abi default/armeabi-v7a
+  - emulator -avd logger -no-skin -no-audio -no-window &
+
+before_script:
+  - echo "Waiting for emulator"
+  - adb wait-for-device
+  - echo "Emulator available"
+  - adb shell input keyevent 82 &
+
+script:
+  ./gradlew --no-daemon connectedCheck
