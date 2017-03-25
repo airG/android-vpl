@@ -67,7 +67,7 @@ public final class VPLHelper {
     }
 
     private void launchPlayStore() throws VPLAppStoreLaunchException {
-        final String marketUri = "market://details?id=" + BuildConfig.APPLICATION_ID;
+        final String marketUri = "market://details?id=" + context.getPackageName();
         Log.d(TAG, "Launching " + marketUri);
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
