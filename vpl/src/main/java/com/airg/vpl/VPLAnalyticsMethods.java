@@ -8,18 +8,10 @@ import android.support.annotation.NonNull;
  */
 
 @SuppressWarnings({"unused", "WeakerAccess"})
-abstract class VPLAnalytics {
+interface VPLAnalyticsMethods {
 
-    protected final Context context;
-    protected final String serviceToken;
-
-    static final String EVENT_VPL_LAUNCH = "VPL Launch";
-    static final String EVENT_UPGRADE = "VPL Upgraded";
-
-    VPLAnalytics(@NonNull final Context ctx, @NonNull final String token) {
-        context = ctx;
-        serviceToken = token;
-    }
+    String EVENT_VPL_LAUNCH = "VPL Launch";
+    String EVENT_UPGRADE = "VPL Upgraded";
 
     /**
      * VPL was launched

@@ -6,28 +6,27 @@ import android.support.annotation.NonNull;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 /**
- * MixPanel Analytics
+ * MixPanel VPLAnalytics
  * Created by MahramF.
  */
 
 @SuppressWarnings("unused")
-class Analytics extends VPLAnalytics {
+class VPLAnalytics implements VPLAnalyticsMethods {
 
     private final MixpanelAPI mixPanel;
 
-    Analytics(@NonNull final Context ctx, @NonNull final String token) {
-        super(ctx, token);
+    VPLAnalytics(@NonNull final Context ctx, @NonNull final String token) {
         mixPanel = MixpanelAPI.getInstance(ctx, token);
     }
 
     @Override
-    void trackVPLLaunch() {
+    public void trackVPLLaunch() {
         mixPanel.track(EVENT_VPL_LAUNCH);
         mixPanel.flush();
     }
 
     @Override
-    void trackVPLUpgrade() {
+    public void trackVPLUpgrade() {
         mixPanel.track(EVENT_UPGRADE);
         mixPanel.flush();
     }

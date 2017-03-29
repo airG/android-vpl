@@ -12,8 +12,6 @@ android {
         versionName "2.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        buildConfigField "String", "TOKEN", "\"$token\""
     }
     buildTypes {
         release {
@@ -21,14 +19,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        mixpanel {
+            buildConfigField "String", "TOKEN", "\"$mixpanelToken\""
+        }
+        google {
+            buildConfigField "String", "TOKEN", "\"$GAToken\""
+        }
+    }
 }
+
+apply from: "$rootDir/dependencies.gradle"
 
 dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile project(path: ':vpl', configuration: 'mixpanelDebug')
+    mixpanelCompile project(path: ':vpl', configuration: 'mixpanelDebug')
+    googleCompile project(path: ':vpl', configuration: 'googleDebug')
+    googleCompile "com.google.android.gms:play-services-analytics:${GMS_VERSION}"
 }

@@ -56,6 +56,7 @@ android {
 
     productFlavors {
         mixpanel {}
+        google {}
     }
 
     publishNonDefault true
@@ -71,6 +72,7 @@ dependencies {
     compile "com.android.support:support-v4:$SUPPORT_LIB_VERSION"
 
     mixpanelCompile "com.mixpanel.android:mixpanel-android:4.9.8"
+    googleCompile "com.google.android.gms:play-services-analytics:${GMS_VERSION}"
     testCompile 'junit:junit:4.12'
 }
 

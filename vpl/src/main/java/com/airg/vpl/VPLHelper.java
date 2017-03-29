@@ -22,12 +22,12 @@ public final class VPLHelper {
     private static final String PREFERENCE_VPL_LAUNCH = "vpl_launch";
 
     private final Context context;
-    private final VPLAnalytics analytics;
+    private final VPLAnalyticsMethods analytics;
     private final SharedPreferences preferences;
 
     private VPLHelper(@NonNull final Context ctx, @NonNull final String analyticsToken) {
         context = ctx;
-        analytics = new Analytics(ctx, analyticsToken);
+        analytics = new VPLAnalytics(ctx, analyticsToken);
         preferences = context.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
     }
 
@@ -84,7 +84,7 @@ public final class VPLHelper {
      * Launcher activity.
      *
      * @param context        context
-     * @param analyticsToken Analytics service token identifying your project
+     * @param analyticsToken VPLAnalytics service token identifying your project
      */
     public static void onVPLLaunched(@NonNull final Context context,
                                      @NonNull final String analyticsToken)
@@ -94,13 +94,13 @@ public final class VPLHelper {
 
     /**
      * The actual application has launched. This method does nothing if {@link #onVPLLaunched(Context, String)} has been called
-     * on this device before. Otherwise reports a VPL upgrade to Analytics. Call from a
+     * on this device before. Otherwise reports a VPL upgrade to VPLAnalytics. Call from a
      * {@link android.content.BroadcastReceiver} listening on action
      * {@link android.content.Intent#ACTION_MY_PACKAGE_REPLACED} (runs every time your package is updated) or from
      * {@link Application#onCreate()} (runs every time your app is launched).
      *
      * @param context        context
-     * @param analyticsToken Analytics service token identifying your project
+     * @param analyticsToken VPLAnalytics service token identifying your project
      */
     public static void onApplicationLaunched(@NonNull final Context context,
                                              @NonNull final String analyticsToken) {
