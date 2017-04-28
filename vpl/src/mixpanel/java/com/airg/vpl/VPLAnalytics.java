@@ -15,7 +15,7 @@ class VPLAnalytics implements VPLAnalyticsMethods {
 
     private final MixpanelAPI mixPanel;
 
-    VPLAnalytics(@NonNull final Context ctx, @NonNull final String token) {
+    VPLAnalytics(@NonNull final Context ctx, final String token) {
         mixPanel = MixpanelAPI.getInstance(ctx, token);
     }
 

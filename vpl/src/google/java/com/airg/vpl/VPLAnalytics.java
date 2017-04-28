@@ -20,7 +20,7 @@ class VPLAnalytics implements VPLAnalyticsMethods {
     private final GoogleAnalytics ga;
     private final Tracker tracker;
 
-    VPLAnalytics(@NonNull final Context ctx, @NonNull final String token) {
+    VPLAnalytics(@NonNull final Context ctx, final String token) {
         //noinspection MissingPermission
         ga = GoogleAnalytics.getInstance(ctx);
         tracker = ga.newTracker(token);

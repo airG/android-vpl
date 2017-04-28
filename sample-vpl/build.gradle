@@ -26,6 +26,9 @@ android {
         google {
             buildConfigField "String", "TOKEN", "\"$GAToken\""
         }
+        fabric {
+            buildConfigField "String", "TOKEN", "null"
+        }
     }
 }
 
@@ -36,6 +39,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
+    fabricCompile('com.crashlytics.sdk.android:answers:1.3.12@aar') {
+        transitive = true
+    }
+    fabricCompile project(path: ':vpl', configuration: 'fabricDebug')
     mixpanelCompile project(path: ':vpl', configuration: 'mixpanelDebug')
     googleCompile project(path: ':vpl', configuration: 'googleDebug')
     googleCompile "com.google.android.gms:play-services-analytics:${GMS_VERSION}"

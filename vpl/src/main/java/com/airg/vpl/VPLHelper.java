@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 /**
@@ -25,7 +26,7 @@ public final class VPLHelper {
     private final VPLAnalyticsMethods analytics;
     private final SharedPreferences preferences;
 
-    private VPLHelper(@NonNull final Context ctx, @NonNull final String analyticsToken) {
+    private VPLHelper(@NonNull final Context ctx, @Nullable final String analyticsToken) {
         context = ctx;
         analytics = new VPLAnalytics(ctx, analyticsToken);
         preferences = context.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
